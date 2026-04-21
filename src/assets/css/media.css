@@ -61,7 +61,8 @@
         background-color: #eee;
     }
 
-    .parameters b.title {
+    .parameters b.title,
+    .same_products {
         display: none;
     }
 
@@ -924,13 +925,13 @@
         height: 280px;
     }
 
-    .product_page .info2 {
+    .product_page .info2,
+    .product_page .characteristics_list {
+        width: 100%;
         margin-right: 0;
     }
 
     .product_page .info1,
-    .product_page .info2,
-    .product_page .characteristics_list,
     .product_page .info3 {
         width: auto;
     }
@@ -1185,8 +1186,7 @@
         margin-bottom: 20px;
     }
 
-    .product_page .info1 .bottom,
-    .product_page .characteristics_list li {
+    .product_page .info1 .bottom {
         flex-direction: column;
     }
 
@@ -1195,7 +1195,7 @@
     }
 
     .product_page .characteristics_list li .name {
-        width: auto;
+        width: 230px;
     }
 
     #goods_comparison .info_2 {
