@@ -64,7 +64,6 @@ export const Feedback = () => {
       <div className="container">
         <div
           className="img"
-          style={{ backgroundImage: "url('img/feedback.png')" }}
         ></div>
 
         <h2>Необходима консультация?</h2>
