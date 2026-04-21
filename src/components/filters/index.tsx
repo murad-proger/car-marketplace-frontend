@@ -5,10 +5,23 @@ import debounce from "lodash.debounce";
 
 import { useAppDispatch } from "../../redux/store";
 import type { RootState } from "../../redux/store";
-import { filterBrands, setPriceMin, setPriceMax, setYearMin, setYearMax, setDisplacementMin, setDisplacementMax, filterBodyType } from "../../redux/slices/filters/slice";
+import {
+  filterBrands,
+  setPriceMin,
+  setPriceMax,
+  setYearMin,
+  setYearMax,
+  setDisplacementMin,
+  setDisplacementMax,
+  filterBodyType
+} from "../../redux/slices/filters/slice";
 import { CustomInput } from "../CustomInput";
 
-export const Filters = () => {
+interface FiltersProps {
+  onClose: () => void;
+}
+
+export const Filters: React.FC<FiltersProps> = ({ onClose }) => {
   const {brands, price, year, displacement, bodyTypes} = useSelector((state:RootState) => state.filters)
   const dispatch = useAppDispatch()
 
@@ -23,23 +36,28 @@ export const Filters = () => {
   const debouncedSetPriceMin = debounce((value: number | null) => {
     dispatch(setPriceMin(value));
   }, 500);
+
   const debouncedSetPriceMax = debounce((value: number | null) => {
     dispatch(setPriceMax(value));
   }, 500);
+
   const debouncedSetYearMin = debounce((value: number | null) => {
     dispatch(setYearMin(value));
   }, 500);
+
   const debouncedSetYearMax = debounce((value: number | null) => {
     dispatch(setYearMax(value));
   }, 500);
+
   const debouncedSetDisplacementMin = debounce((value: number | null) => {
     dispatch(setDisplacementMin(value));
   }, 500);
+
   const debouncedSetDisplacementMax = debounce((value: number | null) => {
     dispatch(setDisplacementMax(value));
   }, 500);
 
-  const resetFilters = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {  // Проблема
+  const resetFilters = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     e.preventDefault();
 
     dispatch(setPriceMin(null));
@@ -60,10 +78,12 @@ export const Filters = () => {
 
   return (
     <div className="filters">
-      <div className="close">
+      <div className="close" onClick={onClose}>
         <span>Закрыть</span>
       </div>
+
       <b className="title">Фильтр</b>
+
       <div className="content">
         <div className="filter price">
           <h3 className="title">
@@ -100,6 +120,7 @@ export const Filters = () => {
             </div>
           </div>
         </div>
+
         <div className="filter brands">
           <h3 className="title">
             Бренд
@@ -107,20 +128,23 @@ export const Filters = () => {
           </h3>
           <div className="inner">
             {
-              brands.map((brand)=>{
-                return (
-                  <label key={brand.name}>
-                    <input onChange={()=>toggleBrand(brand.name)} type="checkbox" checked={brand.isSelected} />
-                    <span className="fake_checkbox">
-                      <span></span>
-                    </span>
-                    <h4>{brand.name}</h4>
-                  </label>
-                )
-              })
+              brands.map((brand)=>(
+                <label key={brand.name}>
+                  <input
+                    onChange={()=>toggleBrand(brand.name)}
+                    type="checkbox"
+                    checked={brand.isSelected}
+                  />
+                  <span className="fake_checkbox">
+                    <span></span>
+                  </span>
+                  <h4>{brand.name}</h4>
+                </label>
+              ))
             }
           </div>
         </div>
+
         <div className="filter year">
           <h3 className="title">
             Год выпуска
@@ -154,6 +178,7 @@ export const Filters = () => {
             </div>
           </div>
         </div>
+
         <div className="filter displacement">
           <h3 className="title">
             Объём двигателя
@@ -189,6 +214,7 @@ export const Filters = () => {
             </div>
           </div>
         </div>
+
         <div className="filter bodyType">
           <h3 className="title">Тип кузова</h3>
           <div className="inner">
@@ -199,16 +225,18 @@ export const Filters = () => {
                   checked={bt.isSelected}
                   onChange={() => toggleBodyType(bt.name)}
                 />
-                <span className="fake_checkbox"><span></span></span>
+                <span className="fake_checkbox">
+                  <span></span>
+                </span>
                 <h4>{bt.name}</h4>
               </label>
             ))}
           </div>
         </div>
       </div>
+
       <div className="row">
-        {/* <input type="submit" value="Подобрать" /> */}
-        <input type="reset" onClick={(e)=>{resetFilters(e)}} value="Сбросить" />
+        <input type="reset" onClick={(e)=>resetFilters(e)} value="Сбросить" />
       </div>
     </div>
   );

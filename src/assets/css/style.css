@@ -1192,6 +1192,7 @@ aside {
   display: flex !important;
   flex-direction: column;
   max-width: 285px;
+  width: 100%;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
@@ -3535,6 +3536,7 @@ ul.list_styling li {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  width: 100%;
 }
 
 .orders-page .cards {

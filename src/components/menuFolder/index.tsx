@@ -1,8 +1,12 @@
 import { MenuItem } from "./MenuItem";
 
-export const Menu = () => {
+interface MenuProps {
+  onClick?: () => void;
+}
+
+export const Menu: React.FC<MenuProps> = ({ onClick }) => {
   return (
-    <ul className="menu">
+    <ul className="menu" onClick={onClick}>
       <MenuItem path={'/favourites'}>Избранные</MenuItem>
       <MenuItem path={'/catalog'}>Каталог</MenuItem>
       <MenuItem path={'/orders'}>Мои заказы</MenuItem>

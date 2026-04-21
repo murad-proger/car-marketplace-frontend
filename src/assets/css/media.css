@@ -33,7 +33,7 @@
         top: 170px;
         left: 0;
         height: 80vh;
-        width: 330px;
+        width: 240px;
         transform: translateX(-200%);
         transition: all 0.3s;
         background-color: rgba(255, 255, 255, 1);
@@ -45,7 +45,7 @@
         padding-right: 5px;
     }
 
-    aside.is_open {
+    aside.active {
         transform: translateX(0);
     }
 
@@ -146,20 +146,20 @@
         text-align: center;
     }
 
+    .catalog_page .ad_unit {
+        display: none;
+    }
+
     .catalog_page .filters {
         position: absolute;
-        top: 150px;
+        top: 0;
         left: 0;
         background-color: #fff;
         box-shadow: 0 0 7px 2px #ddd;
-        transform: translateX(-200%);
         transition: all 0.3s;
         z-index: 1;
         padding: 10px;
-    }
-
-    .catalog_page .filters.open {
-        transform: translateX(0);
+        margin-top: 0;
     }
 
     .catalog_page .filters b.title {
@@ -190,7 +190,19 @@
 
     .filters .close {
         display: block;
+        font-size: 17px;
+        color: #fff;
+        text-align: center;
+        background-color: #bb1616;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 40px;
+        cursor: pointer;
         margin: 5px 5px 15px;
+    }
+
+    .filters .close span:hover {
+        color: #fff;
     }
 
     .our_team .item {
@@ -299,11 +311,6 @@
     footer .top .part1,
     footer .top .part2 {
         margin: 0 0 20px 20px;
-    }
-
-    footer .logo img {
-        width: 47px;
-        height: 47px;
     }
 
     .footer_catalog {
@@ -443,7 +450,7 @@
 
     .mobile_menu {
         position: fixed;
-        top: 68px;
+        top: 10px;
         left: 0;
         flex-direction: column;
         border: 2px solid #df1614;
@@ -523,7 +530,7 @@
     }
 
     .header_panel .bottom .icons {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .header_panel .vin_search {
@@ -669,6 +676,9 @@
         width: 250px;
     }
 
+    .products .cards .card {
+        max-width: calc((50% - 10px));
+    }
 }
 
 
@@ -687,9 +697,18 @@
 
 @media (max-width: 768px){
 
+    .popular_goods,
+    .reviews {
+        display: none;
+    }
+
+    .index .banner {
+        width: calc(100vw - 35px);
+    }
+
     .index,
     .breadcrumbs_section {
-        margin: 80px 0 20px;
+        margin: 40px 0 20px;
     }
 
     .news {
@@ -881,6 +900,25 @@
 
 @media (max-width: 650px) {
 
+    .header_panel {
+        position: relative;
+        width: 100%;
+        order: 3;
+    }
+
+    .header_panel .bottom .icons {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 20px;
+    }
+
+    .header_panel .vin_search {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
     .product_page .main_img {
         width: 350px;
         height: 280px;
@@ -994,8 +1032,13 @@
 
 @media (max-width: 510px) {
 
+    .products .cards .card {
+        max-width: 100%;
+    }
+
     .index .card {
-        width: 280px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .single.news_page .pagination .previous .del,
@@ -1058,8 +1101,8 @@
     }
 
     .header .logo img {
-        width: 27px;
-        height: 27px;
+        width: 80px;
+        height: 30px;
     }
 
     .header .logo_text {
@@ -1188,6 +1231,21 @@
 }
 
 @media (max-width: 400px) {
+
+    .orderCard {
+        padding: 20px 10px;
+    }
+
+    .products h1 {
+        margin-top: 0;
+    }
+
+    .products .top .sorting label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 
     .index h2 {
         font-size: 30px;

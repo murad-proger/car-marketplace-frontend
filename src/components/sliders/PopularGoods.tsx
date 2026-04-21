@@ -13,35 +13,15 @@ export function PopularGoods() {
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
     infinite: true,
     dots: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     responsive: [
-      {
-        breakpoint: 1281,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 510,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
+      { breakpoint: 510, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 1281, settings: { slidesToShow: 3 } },
     ],
   };
 

@@ -15,6 +15,7 @@ const Catalog = () => {
   const {brands, price, year, displacement, bodyTypes} = useSelector((state:RootState) => state.filters)
   const navigate = useNavigate()
   const isMounted = React.useRef(false);
+  const [isFiltersOpen, setIsFiltersOpen] = React.useState(false);
   
   const selectedBrandsFromUrl = React.useRef<string[]>([]);
   const selectedBodyTypesFromUrl = React.useRef<string[]>([]);
@@ -118,8 +119,10 @@ const Catalog = () => {
       <Breadcrumbs />
       <main className="catalog_page">
         <div className="container">
-          <Aside>
-            <Filters />
+          <Aside isActive={isFiltersOpen}>
+            <Filters
+              onClose={() => setIsFiltersOpen(false)}
+            />
           </Aside>
           <div className="content">
             <div className="products">
@@ -136,7 +139,9 @@ const Catalog = () => {
                 </div>
               </div>
               <div className="filters_btn">
-                <button type="button">Фильтр</button>
+                <button type="button" onClick={() => setIsFiltersOpen(true)}>
+                  Фильтр
+                </button>
               </div>
               <div className={`cards ${gridView}`}>
                 {
