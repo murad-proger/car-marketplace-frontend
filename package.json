@@ -2,7 +2,7 @@
   "name": "used-cars",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://murad-proger.github.io/used-cars-react",
+  "homepage": "https://murad-proger.github.io/car-marketplace-frontend",
   "type": "module",
   "scripts": {
     "dev": "vite",
