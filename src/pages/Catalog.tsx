@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router';
+import { useLocation } from "react-router";
 import qs from "qs"
 
 import {Aside, Breadcrumbs, Filters, GridView, ProductCard, Sort, Title,} from "../components";
@@ -17,6 +18,7 @@ const Catalog = () => {
   const isMounted = React.useRef(false);
   const [isFiltersOpen, setIsFiltersOpen] = React.useState(false);
   
+  const location = useLocation();
   const selectedBrandsFromUrl = React.useRef<string[]>([]);
   const selectedBodyTypesFromUrl = React.useRef<string[]>([]);
   const {sort} = useSelector((state: RootState) => state.catalog)
@@ -53,7 +55,7 @@ const Catalog = () => {
   }
 
   React.useEffect(()=>{
-    const parsedString = qs.parse(window.location.search, { ignoreQueryPrefix: true })
+    const parsedString = qs.parse(location.search, { ignoreQueryPrefix: true })
 
     const price = (parsedString.price ?? {}) as {min?: string, max?: string}
     const year = (parsedString.year ?? {}) as {min?: string, max?: string}
@@ -81,7 +83,7 @@ const Catalog = () => {
     brandsArr.forEach(brand => dispatch(filterBrands(brand)))
     bodyTypeArr.forEach(bodyType => dispatch(filterBodyType(bodyType)))
     
-  }, [dispatch])
+  }, [location.search, dispatch])
 
   React.useEffect(() => {
     if (brands.length === 0) return;
