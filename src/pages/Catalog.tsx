@@ -80,7 +80,7 @@ const Catalog = () => {
     dispatch(setDisplacementMin(displacement.min ? Number(displacement.min) : null))
     dispatch(setDisplacementMax(displacement.max ? Number(displacement.max) : null))
 
-    brandsArr.forEach(brand => dispatch(filterBrands(brand)))
+    // brandsArr.forEach(brand => dispatch(filterBrands(brand)))
     bodyTypeArr.forEach(bodyType => dispatch(filterBodyType(bodyType)))
     
   }, [location.search, dispatch])
